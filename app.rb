@@ -13,6 +13,7 @@ set_cookie = "function setCookie(cname,cvalue,exdays) {
 "
 get '/testwrite' do
   response.set_cookie "thirdparty", "set"
+  redirect "/test-read"
   "<html>
 <head>
 <script type='text/javascript'>
