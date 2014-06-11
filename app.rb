@@ -50,5 +50,5 @@ end
 
 get '/test-redirect' do
   response.set_cookie "thirdparty", "set"
-  redirect "http://ec2-54-205-25-185.compute-1.amazonaws.com:3000/"
+  redirect "http://ec2-54-205-25-185.compute-1.amazonaws.com:3000/read-test"
 end
