@@ -21,6 +21,13 @@ read_cookie = "(function(){
     window.readCookie = readCookie; // or expose it however you want
 })();"
 
+set_cookie = "function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+"
 get '/testwrite' do
   response.set_cookie "thirdparty", "set"
   redirect "/test-read"
@@ -45,6 +52,11 @@ end
 get '/set-cookie' do
   response.set_cookie "thirdparty", "set"
   "cookie set"
+end
+
+get '/javascript' do
+  set_cookie + "
+setCookie('thirdparty','setviajs',1);"
 end
 
 get '/test-read' do
