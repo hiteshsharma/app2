@@ -23,6 +23,7 @@ read_cookie = "(function(){
 
 get '/testwrite' do
   response.set_cookie "thirdparty", "set"
+  redirect "/test-read"
   "<html>
 <head>
 <script type='text/javascript'>
@@ -58,5 +59,5 @@ end
 
 get '/test-redirect' do
   response.set_cookie "thirdparty", "set"
-  redirect "https://fjbomjdwxj.localtunnel.me/read-test"
+  redirect "https://diqhvogfdw.localtunnel.me/read-test"
 end
