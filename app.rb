@@ -1,6 +1,8 @@
 require 'sinatra'
 set :protection, :except => :frame_options
-
+configure do
+  mime_type :javascript, 'text/javascript'
+end
 read_cookie = "(function(){
     var cookies;
 
@@ -55,6 +57,7 @@ get '/set-cookie' do
 end
 
 get '/javascript' do
+  content_type :javascript
   set_cookie + "
 setCookie('thirdparty','setviajs',1);"
 end
