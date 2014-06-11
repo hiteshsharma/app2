@@ -32,18 +32,19 @@ set_cookie = "function setCookie(cname,cvalue,exdays) {
 "
 get '/testwrite' do
   response.set_cookie "thirdparty", "set"
-  redirect "/test-read"
+  #redirect "/test-read"
   "<html>
 <head>
 <script type='text/javascript'>
 " + read_cookie +"
+window.location.replace('/test-read');
 function testCookie(){
 var p = document.getElementById('cookiestatus');
 p.innerText= window.readCookie('thirdparty') ? 'cookie set' : 'cookie not set';
 }
 </script>
 </head>
-<body onload='testCookie()'>third party site loaded
+<body onload=''>third party site loaded
 <p id='cookiestatus'>
 
 </p>
